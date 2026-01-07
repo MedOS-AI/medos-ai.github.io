@@ -187,7 +187,7 @@
                     
                     <!-- Typewriter Tagline -->
                     <div class="text-lg font-medium flex items-center justify-center md:justify-start mt-2 h-8 text-gray-600">
-                        <span class="mr-2">Autonomous Agent for</span>
+                        <span class="mr-2">World Model for</span>
                         <div class="flex items-center min-w-[200px]">
                             <span id="typewriter-text" class="text-blue-600 font-bold text-left whitespace-nowrap"></span>
                             <span class="cursor-blink text-blue-600 font-bold ml-0.5">|</span>
@@ -208,7 +208,7 @@
 
             <!-- Page Wide Banner Video -->
             <div class="w-full mb-8 bg-black shadow-2xl rounded-xl overflow-hidden border border-gray-800">
-                <video autoplay muted loop playsinline class="w-full h-auto block max-h-[80vh] object-cover">
+                <video autoplay muted playsinline class="w-full h-auto block max-h-[80vh] object-cover">
                     <source src="banner.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
@@ -549,11 +549,19 @@
         document.addEventListener("DOMContentLoaded", function() {
             // Typewriter Animation
             const disciplines = [
-                "Medical Robotics",
                 "Surgical AI",
-                "Clinical Decision Support",
+                "Clinical Decision",
                 "Healthcare Automation",
-                "Interventional Medicine"
+                "Medical Robotics",
+                "Médecine",
+                "医学",
+                "의학",
+                "Medicina",
+                "Medizin",
+                "Medicina",
+                "طب",
+                "外科学",
+                "肿瘤学"
             ];
             
             const typewriterElement = document.getElementById('typewriter-text');
@@ -606,7 +614,7 @@
 
             videos.forEach(video => {
                 video.muted = true; // Required for autoplay
-                video.loop = true;
+                video.loop = false;
                 video.playsInline = true;
                 
                 // Remove autoplay attribute to rely solely on observer
