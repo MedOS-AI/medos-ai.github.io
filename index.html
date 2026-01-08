@@ -68,6 +68,29 @@
         .sat-step-2 { animation: borderPulse 3s infinite; animation-delay: 1s; }
         .sat-step-3 { animation: borderPulse 3s infinite; animation-delay: 2s; }
 
+        /* Text Animations */
+        @keyframes sequenceItem1 {
+            0%, 100% { opacity: 0; transform: translateY(20px); }
+            10%, 90% { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes sequenceItem2 {
+            0%, 25%, 100% { opacity: 0; transform: translateY(20px); }
+            35%, 90% { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes sequenceItem3 {
+            0%, 50%, 100% { opacity: 0; transform: translateY(20px); }
+            60%, 90% { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-sequence-1 { animation: sequenceItem1 6s ease-in-out infinite; }
+        .animate-sequence-2 { animation: sequenceItem2 6s ease-in-out infinite; }
+        .animate-sequence-3 { animation: sequenceItem3 6s ease-in-out infinite; }
+
+        .animate-fade-in-up {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
         /* Dual System Flow Animation */
         @keyframes flowRight {
             0% { background-position: 0% 50%; }
@@ -183,7 +206,7 @@
                     <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight">
                         <span class="tech-shimmer block">MedOS</span>
                     </h1>
-                    <p class="text-xl md:text-2xl text-gray-900 mt-1 font-semibold tech-pulse">The AI-XR World Model That Sees and Operates</p>
+                    <p class="text-xl md:text-2xl text-gray-900 mt-1 font-semibold tech-pulse">Bringing Physical Intelligence to Medicine</p>
                     
                     <!-- Typewriter Tagline -->
                     <div class="text-lg font-medium flex items-center justify-center md:justify-start mt-2 h-8 text-gray-600">
@@ -249,12 +272,14 @@
 
     <!-- Definition Section -->
     <section class="py-20 max-w-5xl mx-auto px-4 relative z-10">
-        <h2 class="text-3xl font-bold text-center mb-12">
-            <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600">The AI-XR World Model That Sees and Operates</span>
+        <h2 class="text-3xl font-bold text-center mb-12 leading-relaxed">
+            <div class="animate-sequence-1 text-gray-800">Gemini understands language.</div>
+            <div class="animate-sequence-2 text-gray-800">Sora understands video.</div>
+            <div class="animate-sequence-3 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600">MedOS understands Tissue Dynamics.</div>
         </h2>
         <div class="glass-panel rounded-2xl p-8 shadow-sm">
             <p class="text-lg text-gray-700 mb-10 leading-relaxed text-center max-w-3xl mx-auto">
-                MedOS constructs a <strong class="text-blue-600">Agentic World Model</strong> that fundamentally understands surgical physics. We model the surgical procedure as a continuous State-Action-Transition loop:
+                MedOS constructs a <strong class="text-blue-600">Agentic World Model</strong> that fundamentally understands surgical physics, with the State-Action-Transition loop:
             </p>
             
             <div class="grid md:grid-cols-3 gap-6 relative mt-8">
@@ -269,36 +294,36 @@
                 <!-- State Card -->
                 <div class="bg-white/50 backdrop-blur-sm p-6 rounded-xl border border-gray-100 tech-card-hover sat-step-1">
                     <div class="flex items-center justify-between mb-4">
-                        <div class="w-10 h-10 bg-blue-50 text-blue-600 rounded-lg flex items-center justify-center text-lg font-bold border border-blue-100">S</div>
-                        <span class="text-xs font-mono text-gray-400 bg-gray-50 px-2 py-1 rounded">INPUT</span>
+                        <div class="w-10 h-10 bg-blue-50 text-blue-600 rounded-lg flex items-center justify-center text-lg font-bold border border-blue-100">P</div>
+                        <span class="text-xs font-mono text-gray-400 bg-gray-50 px-2 py-1 rounded">PERCEPTION</span>
                     </div>
-                    <h3 class="font-bold text-xl mb-3">State (<span class="serif italic text-blue-600">S<sub>t</sub></span>)</h3>
+                    <h3 class="font-bold text-xl mb-3">Perception (<span class="serif italic text-blue-600">S<sub>t</sub></span>)</h3>
                     <p class="text-sm text-gray-600 leading-relaxed">
-                        Includes anatomical structures, tissue tension physics, field-of-view quality, and critical anatomical landmarks.
+                        Not just input, but a deep understanding of the environment.
                     </p>
                 </div>
 
                 <!-- Action Card -->
                 <div class="bg-white/50 backdrop-blur-sm p-6 rounded-xl border border-gray-100 tech-card-hover sat-step-2">
                     <div class="flex items-center justify-between mb-4">
-                        <div class="w-10 h-10 bg-indigo-50 text-indigo-600 rounded-lg flex items-center justify-center text-lg font-bold border border-indigo-100">A</div>
-                        <span class="text-xs font-mono text-gray-400 bg-gray-50 px-2 py-1 rounded">PROCESS</span>
+                        <div class="w-10 h-10 bg-indigo-50 text-indigo-600 rounded-lg flex items-center justify-center text-lg font-bold border border-indigo-100">I</div>
+                        <span class="text-xs font-mono text-gray-400 bg-gray-50 px-2 py-1 rounded">INTERVENTION</span>
                     </div>
-                    <h3 class="font-bold text-xl mb-3">Action (<span class="serif italic text-indigo-600">A<sub>t</sub></span>)</h3>
+                    <h3 class="font-bold text-xl mb-3">Intervention (<span class="serif italic text-indigo-600">A<sub>t</sub></span>)</h3>
                     <p class="text-sm text-gray-600 leading-relaxed">
-                        Decouples surgical maneuvers into universal primitives combined with physical parameters.
+                        Actions that actively change the physical world.
                     </p>
                 </div>
 
                 <!-- Next State Card (formerly Transition) -->
                 <div class="bg-white/50 backdrop-blur-sm p-6 rounded-xl border border-gray-100 tech-card-hover sat-step-3">
                     <div class="flex items-center justify-between mb-4">
-                        <div class="w-10 h-10 bg-emerald-50 text-emerald-600 rounded-lg flex items-center justify-center text-lg font-bold border border-emerald-100">N</div>
-                        <span class="text-xs font-mono text-gray-400 bg-gray-50 px-2 py-1 rounded">OUTPUT</span>
+                        <div class="w-10 h-10 bg-emerald-50 text-emerald-600 rounded-lg flex items-center justify-center text-lg font-bold border border-emerald-100">S</div>
+                        <span class="text-xs font-mono text-gray-400 bg-gray-50 px-2 py-1 rounded">SIMULATION</span>
                     </div>
-                    <h3 class="font-bold text-xl mb-3">Next State (<span class="serif italic text-emerald-600">S<sub>t+1</sub></span>)</h3>
+                    <h3 class="font-bold text-xl mb-3">Simulation (<span class="serif italic text-emerald-600">S<sub>t+1</sub></span>)</h3>
                     <p class="text-sm text-gray-600 leading-relaxed">
-                        Predicts the evolution <span class="serif italic">S<sub>t</sub> &rarr; A<sub>t</sub> &rarr; S<sub>t+1</sub></span>. The core capability is simulating <strong>physical consequences</strong> (e.g., tearing from over-traction).
+                        Predicted future state, not just output.
                     </p>
                 </div>
             </div>
@@ -320,7 +345,7 @@
                         <i class="fas fa-brain text-9xl"></i>
                     </div>
                     <div class="relative z-10">
-                        <h3 class="text-2xl font-bold text-blue-400 mb-1">System 2</h3>
+                        <h3 class="text-2xl font-bold text-blue-400 mb-1">System 2: Reasoning</h3>
                         <p class="text-sm text-slate-400 mb-6 uppercase tracking-wider font-semibold">Slow</p>
                         
                         <ul class="space-y-3 text-sm">
@@ -347,7 +372,7 @@
                         <i class="fas fa-bolt text-9xl"></i>
                     </div>
                     <div class="relative z-10">
-                        <h3 class="text-2xl font-bold text-emerald-600 mb-1">System 1</h3>
+                        <h3 class="text-2xl font-bold text-emerald-600 mb-1">System 1: Reflex</h3>
                         <p class="text-sm text-gray-400 mb-6 uppercase tracking-wider font-semibold">Fast</p>
                         
                         <ul class="space-y-3 text-sm text-gray-700">
@@ -369,7 +394,7 @@
     <!-- Dataset Section -->
     <section class="py-16 bg-gray-50 border-t border-gray-200">
         <div class="max-w-6xl mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12">MedSuperVision: A Large-Scale Surgical Video Dataset</h2>
+            <h2 class="text-3xl font-bold text-center mb-12">MedSuperVision: The Largest Medical Vision Dataset</h2>
             <p class="text-center text-gray-600 max-w-3xl mx-auto mb-12">
                 We present MedSuperVision, the largest open-source surgical video dataset to date, featuring diverse procedures and high-fidelity annotations.
             </p>
@@ -401,7 +426,17 @@
     <!-- Benchmark Section -->
     <section class="py-16 bg-white border-t border-gray-200">
         <div class="max-w-6xl mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12">Benchmark Performance</h2>
+
+            <!-- MedOS Capabilities Typewriter -->
+            <div class="text-center mb-12">
+                <div class="inline-flex items-center text-2xl md:text-3xl font-bold text-gray-800">
+                    <span class="mr-3">MedOS Can</span>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 min-w-[250px] text-left">
+                        <span id="typewriter-capabilities"></span>
+                        <span class="cursor-blink text-blue-600">|</span>
+                    </span>
+                </div>
+            </div>
             <p class="text-center text-gray-600 max-w-3xl mx-auto mb-12">
                 MedOS demonstrates superior performance across both perception and reasoning tasks, outperforming existing state-of-the-art models.
             </p>
@@ -409,13 +444,18 @@
             <div class="max-w-4xl mx-auto bg-gray-50 p-4 rounded-xl shadow-sm border border-gray-100">
                 <img src="system12_benchmark.png" alt="System 1 & 2 Benchmark" class="w-full rounded-lg shadow-sm">
             </div>
+
         </div>
+        <br>
+        <br>
+        <br>
+
     </section>
 
     <!-- Autonomous Agent Section -->
     <section class="py-16 bg-gray-50 border-t border-gray-200">
         <div class="max-w-6xl mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12">Autonomous Medical Agent</h2>
+            <h2 class="text-3xl font-bold text-center mb-12">The First AI Surgeon Copilot.</h2>
             <p class="text-center text-gray-600 max-w-3xl mx-auto mb-12">
                 Powered by MedOS, our autonomous agent can execute complex surgical tasks with precision and adaptability in simulated environments.
             </p>
@@ -438,6 +478,13 @@
             </div>
         </div>
     </section>
+
+    <!-- Slogan -->
+    <div class="py-12 text-center bg-white">
+        <h2 class="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 tracking-tight">
+            Democratizing Medical Excellence
+        </h2>
+    </div>
 
     <!-- Citation -->
     <section class="py-12 bg-white max-w-4xl mx-auto px-4">
@@ -552,7 +599,45 @@
     <!-- Video Autoplay Script -->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            // Typewriter Animation
+            // Typewriter Factory Function
+            function createTypewriter(elementId, words, options = {}) {
+                const element = document.getElementById(elementId);
+                if (!element) return;
+
+                let wordIndex = 0;
+                let charIndex = 0;
+                let isDeleting = false;
+                let typeSpeed = options.typeSpeed || 100;
+                
+                function type() {
+                    const currentWord = words[wordIndex];
+                    
+                    if (isDeleting) {
+                        element.textContent = currentWord.substring(0, charIndex - 1);
+                        charIndex--;
+                        typeSpeed = options.deleteSpeed || 50;
+                    } else {
+                        element.textContent = currentWord.substring(0, charIndex + 1);
+                        charIndex++;
+                        typeSpeed = options.typeSpeed || 100;
+                    }
+
+                    if (!isDeleting && charIndex === currentWord.length) {
+                        isDeleting = true;
+                        typeSpeed = options.pauseEnd || 2000;
+                    } else if (isDeleting && charIndex === 0) {
+                        isDeleting = false;
+                        wordIndex = (wordIndex + 1) % words.length;
+                        typeSpeed = options.pauseStart || 500;
+                    }
+
+                    setTimeout(type, typeSpeed);
+                }
+                
+                type();
+            }
+
+            // Hero Typewriter
             const disciplines = [
                 "Surgical AI",
                 "Clinical Decision",
@@ -568,42 +653,16 @@
                 "外科学",
                 "肿瘤学"
             ];
-            
-            const typewriterElement = document.getElementById('typewriter-text');
-            let disciplineIndex = 0;
-            let charIndex = 0;
-            let isDeleting = false;
-            let typeSpeed = 100;
+            createTypewriter('typewriter-text', disciplines);
 
-            function type() {
-                const currentDiscipline = disciplines[disciplineIndex];
-                
-                if (isDeleting) {
-                    typewriterElement.textContent = currentDiscipline.substring(0, charIndex - 1);
-                    charIndex--;
-                    typeSpeed = 50;
-                } else {
-                    typewriterElement.textContent = currentDiscipline.substring(0, charIndex + 1);
-                    charIndex++;
-                    typeSpeed = 100;
-                }
-
-                if (!isDeleting && charIndex === currentDiscipline.length) {
-                    isDeleting = true;
-                    typeSpeed = 2000; // Pause at end
-                } else if (isDeleting && charIndex === 0) {
-                    isDeleting = false;
-                    disciplineIndex = (disciplineIndex + 1) % disciplines.length;
-                    typeSpeed = 500; // Pause before new word
-                }
-
-                setTimeout(type, typeSpeed);
-            }
-
-            // Start the typing loop
-            if (typewriterElement) {
-                type();
-            }
+            // MedOS Capabilities Typewriter
+            const capabilities = [
+                "Simulate Physics",
+                "Predict Risks",
+                "Understand Anatomy",
+                "Reason in 4D"
+            ];
+            createTypewriter('typewriter-capabilities', capabilities);
 
             const videos = document.querySelectorAll("video");
             
