@@ -204,11 +204,15 @@
             <div class="flex flex-col md:flex-row justify-between items-end mb-6 gap-4">
                 <!-- Left: Title & Subtitle & Tagline -->
                 <div class="text-center md:text-left flex-1">
-                    <h1 class="text-4xl md:text-3xl font-extrabold tracking-tight whitespace-nowrap">
-                        <span class="tech-shimmer block">MedOS
-                            <br>
-                            AI-XR-Cobot World Model</span>
+                    <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight whitespace-nowrap mb-2">
+                        <span class="tech-shimmer">MedOS</span>
                     </h1>
+                    <p class="text-xl md:text-2xl font-bold text-gray-900 mt-1">
+                        Towards First AI-XR-Cobot World Model
+                    </p>
+                    <p class="text-lg md:text-xl font-medium text-gray-600 mt-2 h-8">
+                        World Model for <span id="hero-typewriter" class="text-blue-600 border-r-2 border-blue-600 pr-1"></span>
+                    </p>
                 </div>
 
                 <!-- Right: Meta Info -->
@@ -269,11 +273,11 @@
         <h2 class="text-3xl font-bold text-center mb-12 leading-relaxed">
             <div class="animate-sequence-1 text-gray-800">Gemini understands language.</div>
             <div class="animate-sequence-2 text-gray-800">Sora understands video.</div>
-            <div class="animate-sequence-3 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600">MedOS understands Worlds of Medicine.</div>
+            <div class="animate-sequence-3 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600">MedOS understands Medical Reality.</div>
         </h2>
         <div class="glass-panel rounded-2xl p-8 shadow-sm">
             <p class="text-lg text-gray-700 mb-10 leading-relaxed text-center max-w-3xl mx-auto">
-                MedOS constructs a <strong class="text-blue-600">Agentic World Model</strong> that fundamentally understands surgical physics, with the State-Action-Transition loop:
+                MedOS constructs an <strong class="text-blue-600">Agentic World Model</strong> that fundamentally understands surgical physics, with the State-Action-Transition loop:
             </p>
             
             <div class="grid md:grid-cols-3 gap-6 relative mt-8">
@@ -345,7 +349,7 @@
                         <ul class="space-y-3 text-sm">
                             <li class="flex items-start">
                                 <i class="fas fa-eye mt-1 text-blue-400 mr-2"></i>
-                                <span>God's Eye View (Future Frames)</span>
+                                <span>Spatiotemporal Reasoning (Future Frames)</span>
                             </li>
                             <li class="flex items-start">
                                 <i class="fas fa-project-diagram mt-1 text-blue-400 mr-2"></i>
@@ -388,7 +392,9 @@
     <!-- New SOTA Section -->
     <section class="py-16 bg-gray-50 border-t border-gray-200">
         <div class="max-w-6xl mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12">New SOTA in Biomedical Intelligence</h2>
+            <h2 class="text-3xl font-bold text-center mb-12 min-h-[4rem]">
+                New SOTA in <span id="sota-typewriter" class="text-blue-600 border-r-4 border-blue-600 pr-1 animate-pulse"></span>
+            </h2>
             
             <div id="sota-chart-container" class="grid md:grid-cols-2 gap-8">
                 <!-- MedQA Panel -->
@@ -415,7 +421,7 @@
         <div class="max-w-6xl mx-auto px-4">
             <h2 class="text-3xl font-bold text-center mb-12">MedSuperVision: The Largest Medical Vision Dataset</h2>
             <p class="text-center text-gray-600 max-w-3xl mx-auto mb-12">
-                We present MedSuperVision, the largest open-source surgical video dataset to date, featuring diverse procedures and high-fidelity annotations.
+                We present MedSuperVision, the largest open-source surgical video dataset to date. Curated by board-certified surgeons, it features 85,398 hours of diverse procedures and high-fidelity annotations.
             </p>
             
             <div class="grid md:grid-cols-2 gap-8 mb-12">
@@ -447,7 +453,7 @@
         <div class="max-w-6xl mx-auto px-4">
             <h2 class="text-3xl font-bold text-center mb-8">Democratizing Expertise</h2>
             <p class="text-lg text-gray-700 mb-12 leading-relaxed text-center max-w-4xl mx-auto">
-                One of the most impactful findings is the system's ability to level the playing field. In human-AI collaboration studies, MedOS enabled nurses and medical students to rival the diagnostic accuracy of attending physicians. Furthermore, it acted as a cognitive safety net, restoring the performance of post-call doctors to levels better than their well-rested baseline.
+                One of the most impactful findings is the system's ability to level the playing field. In human-AI collaboration studies, MedOS enabled nurses and medical students to achieve diagnostic precision comparable to attending physicians. Furthermore, it acted as a cognitive safety net, restoring the performance of post-call doctors to levels better than their well-rested baseline.
             </p>
 
             <div class="grid md:grid-cols-2 gap-8">
@@ -492,86 +498,92 @@
             <h2 class="text-3xl font-bold text-center mb-12">XR-Robot-Human Collaboration</h2>
             
             <!-- Part 1 -->
-            <div class="grid md:grid-cols-2 gap-8 mb-16 items-stretch">
-                <!-- Left: Robot 1 Image -->
-                <div class="bg-gray-50 rounded-2xl border border-gray-200 h-full p-2 flex items-center justify-center">
-                    <img src="robot1.png" alt="Robot Human Collaboration 1" class="max-w-full max-h-full object-contain rounded-xl">
-                </div>
-                
-                <!-- Right: Charts (Jitter, Drift, Tilt) - Consolidated Card -->
-                <div class="bg-gray-50 p-4 rounded-2xl border border-gray-200" id="xr-collab-charts-1">
-                    <div class="grid grid-cols-3 gap-4 h-full">
-                        <!-- Jitter -->
-                        <div class="flex flex-col h-full">
-                            <h4 class="text-xs font-bold text-center mb-2 text-gray-700 h-8 flex items-center justify-center">Static Jitter<br>(Pixel)</h4>
-                            <div class="flex-grow relative min-h-[160px] overflow-hidden">
-                                <div class="absolute inset-0">
-                                    <canvas id="xrJitterChart"></canvas>
+            <div class="mb-16">
+                <div class="grid md:grid-cols-2 gap-8 items-stretch">
+                    <!-- Left: Robot 1 Image -->
+                    <div class="bg-gray-50 rounded-2xl border border-gray-200 h-full p-2 flex items-center justify-center">
+                        <img src="robot1.png" alt="Robot Human Collaboration 1" class="max-w-full max-h-full object-contain rounded-xl">
+                    </div>
+                    
+                    <!-- Right: Charts (Jitter, Drift, Tilt) - Consolidated Card -->
+                    <div class="bg-gray-50 p-4 rounded-2xl border border-gray-200" id="xr-collab-charts-1">
+                        <div class="grid grid-cols-3 gap-4 h-full">
+                            <!-- Jitter -->
+                            <div class="flex flex-col h-full">
+                                <h4 class="text-xs font-bold text-center mb-2 text-gray-700 h-8 flex items-center justify-center">Static Jitter<br>(Pixel)</h4>
+                                <div class="flex-grow relative min-h-[160px] overflow-hidden">
+                                    <div class="absolute inset-0">
+                                        <canvas id="xrJitterChart"></canvas>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <!-- Drift -->
-                        <div class="flex flex-col h-full border-l border-gray-200 pl-4">
-                            <h4 class="text-xs font-bold text-center mb-2 text-gray-700 h-8 flex items-center justify-center">Drift<br>(Pixel)</h4>
-                            <div class="flex-grow relative min-h-[160px] overflow-hidden">
-                                <div class="absolute inset-0">
-                                    <canvas id="xrDriftChart"></canvas>
+                            <!-- Drift -->
+                            <div class="flex flex-col h-full border-l border-gray-200 pl-4">
+                                <h4 class="text-xs font-bold text-center mb-2 text-gray-700 h-8 flex items-center justify-center">Drift<br>(Pixel)</h4>
+                                <div class="flex-grow relative min-h-[160px] overflow-hidden">
+                                    <div class="absolute inset-0">
+                                        <canvas id="xrDriftChart"></canvas>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <!-- Horizon Tilt -->
-                        <div class="flex flex-col h-full border-l border-gray-200 pl-4">
-                            <h4 class="text-xs font-bold text-center mb-2 text-gray-700 h-8 flex items-center justify-center">Horizon Tilt<br>(Angle °)</h4>
-                            <div class="flex-grow relative min-h-[160px] overflow-hidden">
-                                <div class="absolute inset-0">
-                                    <canvas id="xrTiltChart"></canvas>
+                            <!-- Horizon Tilt -->
+                            <div class="flex flex-col h-full border-l border-gray-200 pl-4">
+                                <h4 class="text-xs font-bold text-center mb-2 text-gray-700 h-8 flex items-center justify-center">Horizon Tilt<br>(Angle °)</h4>
+                                <div class="flex-grow relative min-h-[160px] overflow-hidden">
+                                    <div class="absolute inset-0">
+                                        <canvas id="xrTiltChart"></canvas>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <p class="text-sm text-gray-600 mt-3 text-center italic">Eliminating human tremor and drift for surgical precision.</p>
             </div>
 
             <!-- Part 2 -->
-            <div class="grid md:grid-cols-2 gap-8 items-stretch">
-                <!-- Left: Robot 2 Image -->
-                <div class="bg-gray-50 rounded-2xl border border-gray-200 h-full p-2 flex items-center justify-center">
-                    <img src="robot2.png" alt="Robot Human Collaboration 2" class="max-w-full max-h-full object-contain rounded-xl">
-                </div>
+            <div>
+                <div class="grid md:grid-cols-2 gap-8 items-stretch">
+                    <!-- Left: Robot 2 Image -->
+                    <div class="bg-gray-50 rounded-2xl border border-gray-200 h-full p-2 flex items-center justify-center">
+                        <img src="robot2.png" alt="Robot Human Collaboration 2" class="max-w-full max-h-full object-contain rounded-xl">
+                    </div>
 
-                <!-- Right: Procedures Charts -->
-                <div class="bg-gray-50 p-4 rounded-2xl border border-gray-200" id="xr-collab-charts-2">
-                     <h4 class="text-xs font-bold text-center text-gray-500 uppercase tracking-wider mb-4 h-4">Procedure Time (s)</h4>
-                     <div class="grid grid-cols-3 gap-4 h-[calc(100%-2rem)]">
-                        <!-- Chart 1 -->
-                        <div class="flex flex-col h-full">
-                            <h4 class="text-xs font-bold text-center mb-2 text-gray-700 h-10 flex items-center justify-center leading-tight">Laparoscopic<br>Cholecystectomy<br>Simulation</h4>
-                            <div class="flex-grow relative min-h-[160px] overflow-hidden">
-                                <div class="absolute inset-0">
-                                    <canvas id="xrProcChart1"></canvas>
+                    <!-- Right: Procedures Charts -->
+                    <div class="bg-gray-50 p-4 rounded-2xl border border-gray-200" id="xr-collab-charts-2">
+                         <h4 class="text-xs font-bold text-center text-gray-500 uppercase tracking-wider mb-4 h-4">Procedure Time (s)</h4>
+                         <div class="grid grid-cols-3 gap-4 h-[calc(100%-2rem)]">
+                            <!-- Chart 1 -->
+                            <div class="flex flex-col h-full">
+                                <h4 class="text-xs font-bold text-center mb-2 text-gray-700 h-10 flex items-center justify-center leading-tight">Laparoscopic<br>Cholecystectomy<br>Simulation</h4>
+                                <div class="flex-grow relative min-h-[160px] overflow-hidden">
+                                    <div class="absolute inset-0">
+                                        <canvas id="xrProcChart1"></canvas>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <!-- Chart 2 -->
-                        <div class="flex flex-col h-full border-l border-gray-200 pl-4">
-                            <h4 class="text-xs font-bold text-center mb-2 text-gray-700 h-10 flex items-center justify-center leading-tight">Urethrovesical<br>Anastomosis<br>Simulation</h4>
-                            <div class="flex-grow relative min-h-[160px] overflow-hidden">
-                                <div class="absolute inset-0">
-                                    <canvas id="xrProcChart2"></canvas>
+                            <!-- Chart 2 -->
+                            <div class="flex flex-col h-full border-l border-gray-200 pl-4">
+                                <h4 class="text-xs font-bold text-center mb-2 text-gray-700 h-10 flex items-center justify-center leading-tight">Urethrovesical<br>Anastomosis<br>Simulation</h4>
+                                <div class="flex-grow relative min-h-[160px] overflow-hidden">
+                                    <div class="absolute inset-0">
+                                        <canvas id="xrProcChart2"></canvas>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <!-- Chart 3 -->
-                        <div class="flex flex-col h-full border-l border-gray-200 pl-4">
-                            <h4 class="text-xs font-bold text-center mb-2 text-gray-700 h-10 flex items-center justify-center leading-tight">Salpingostomy<br>(Tube Surgery)<br>Simulation</h4>
-                            <div class="flex-grow relative min-h-[160px] overflow-hidden">
-                                <div class="absolute inset-0">
-                                    <canvas id="xrProcChart3"></canvas>
+                            <!-- Chart 3 -->
+                            <div class="flex flex-col h-full border-l border-gray-200 pl-4">
+                                <h4 class="text-xs font-bold text-center mb-2 text-gray-700 h-10 flex items-center justify-center leading-tight">Salpingostomy<br>(Tube Surgery)<br>Simulation</h4>
+                                <div class="flex-grow relative min-h-[160px] overflow-hidden">
+                                    <div class="absolute inset-0">
+                                        <canvas id="xrProcChart3"></canvas>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <p class="text-sm text-gray-600 mt-3 text-center italic max-w-4xl mx-auto">Immersive Human-AI Symbiosis. The setup (Left) allows the operator to control the robotic arm with intuitive XR feedback, enabling the human-AI team to outperform traditional manual surgery in speed and fluidity.</p>
             </div>
         </div>
     </section>
@@ -609,7 +621,7 @@
         <div class="bg-gray-100 p-6 rounded-lg overflow-x-auto custom-scrollbar">
             <pre class="font-mono text-sm text-gray-700"><code>@article{MedOS,
   title={MedOS: The AI-XR World Model That Sees and Operates},
-  author={Le Cong, Mengdi Wang, Yingcheng Wu, et al.},
+  author={Yingcheng Wu, ..., Mengdi Wang, Le Cong*},
   journal={Preprint},
   year={2026}
 }</code></pre>
@@ -704,7 +716,7 @@
     <section class="py-16 bg-gray-50 border-t border-gray-200">
         <div class="max-w-4xl mx-auto px-4 text-center">
             <h2 class="text-3xl font-bold mb-2">Join Us</h2>
-            <p class="text-xl font-semibold text-gray-800 mb-2">Sign-up Form</p>
+            <p class="text-xl font-semibold text-gray-800 mb-2">Partner with MedOS</p>
             <p class="text-gray-600 mb-8">Tell us your use-case. We'll follow up with access details.</p>
             
             <div class="bg-white p-2 md:p-6 rounded-xl shadow-sm border border-gray-200 overflow-hidden">
@@ -770,21 +782,23 @@
 
             // Hero Typewriter
             const disciplines = [
-                "Surgical AI",
-                "Clinical Decision",
-                "Healthcare Automation",
+                "Medicine",
+                "Surgery",
+                "Diagnostics",
                 "Medical Robotics",
-                "Médecine",
+                "Medical Education",
                 "医学",
-                "의학",
+                "चिकित्सा",
                 "Medicina",
-                "Medizin",
-                "Medicina",
-                "طب",
-                "外科学",
-                "肿瘤学"
+                "Médecine",
+                "طب"
             ];
-            createTypewriter('typewriter-text', disciplines);
+            createTypewriter('hero-typewriter', disciplines, {
+                typeSpeed: 80,
+                deleteSpeed: 50,
+                pauseEnd: 2000,
+                pauseStart: 300
+            });
 
             // MedOS Capabilities Typewriter
             const capabilities = [
@@ -794,6 +808,20 @@
                 "Reason in 4D"
             ];
             createTypewriter('typewriter-capabilities', capabilities);
+
+            // SOTA Typewriter
+            const sotaTerms = [
+                "Biomedical Intelligence",
+                "Clinical Reasoning",
+                "Agentic Healthcare",
+                "Clinical Decision Support"
+            ];
+            createTypewriter('sota-typewriter', sotaTerms, {
+                typeSpeed: 80,
+                deleteSpeed: 40,
+                pauseEnd: 2500,
+                pauseStart: 500
+            });
 
             const videos = document.querySelectorAll("video");
             
