@@ -416,6 +416,64 @@
         </div>
     </section>
 
+    <!-- Autonomous Clinical Discovery Section -->
+    <section class="py-16 bg-white border-t border-gray-200">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Autonomous Clinical Discovery</h2>
+            
+            <div id="discovery-slider" class="bg-gray-50 rounded-2xl border border-gray-200 overflow-hidden shadow-sm flex flex-col">
+                <!-- Navigation Bar -->
+                <div class="flex justify-end p-4 bg-white border-b border-gray-100">
+                    <div class="flex gap-2">
+                        <button onclick="switchCase(1)" id="btn-case-1" class="px-3 py-1 text-sm font-semibold rounded-full bg-blue-50 text-blue-600 shadow-sm transition-all border border-blue-200">Case 1</button>
+                        <button onclick="switchCase(2)" id="btn-case-2" class="px-3 py-1 text-sm font-semibold rounded-full bg-white text-gray-600 hover:bg-gray-50 hover:text-blue-600 shadow-sm transition-all border border-gray-200 hover:border-blue-100">Case 2</button>
+                        <button onclick="switchCase(3)" id="btn-case-3" class="px-3 py-1 text-sm font-semibold rounded-full bg-white text-gray-600 hover:bg-gray-50 hover:text-blue-600 shadow-sm transition-all border border-gray-200 hover:border-blue-100">Case 3</button>
+                    </div>
+                </div>
+
+                <!-- Image Area -->
+                <div class="w-full bg-gradient-to-b from-gray-50 to-white relative overflow-hidden group p-8 flex items-center justify-center min-h-[400px]">
+                    <!-- Background Decoration -->
+                    <div class="absolute inset-0 opacity-30 pointer-events-none">
+                        <div class="absolute top-0 left-0 w-64 h-64 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
+                        <div class="absolute top-0 right-0 w-64 h-64 bg-indigo-100 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
+                    </div>
+                    
+                    <div id="case-image-container" class="relative z-10 w-full max-w-4xl transition-all duration-500 transform">
+                        <img id="case-image" src="case1.png" alt="Clinical Case" class="w-full h-auto object-contain max-h-[500px] shadow-2xl rounded-xl border border-gray-100/50 bg-white/80 backdrop-blur-sm transition-opacity duration-500 opacity-100">
+                    </div>
+                </div>
+
+                <!-- Content Area -->
+                <div class="p-8 border-t border-gray-100 bg-white relative z-20">
+                    <div class="max-w-4xl mx-auto transition-opacity duration-500" id="case-content">
+                            <div class="mb-4">
+                                <span class="text-xs font-bold text-blue-600 uppercase tracking-wider bg-blue-50 px-2 py-1 rounded-md border border-blue-100 mb-2 inline-block">Case Study</span>
+                                <h3 id="case-title" class="text-2xl font-bold text-gray-900 leading-tight">Autonomously Investigating Semaglutide's Immune Effect</h3>
+                            </div>
+                            
+                            <p id="case-desc" class="text-gray-600 mb-6 leading-relaxed">
+                                From a single patient observation, MedOS autonomously queries the <strong>FAERS database</strong> to analyze adverse events and performs meta-analysis on inflammatory factors (TNF-α, IL-6).
+                            </p>
+
+                            <div class="bg-white rounded-xl p-4 border border-blue-100 shadow-sm">
+                                <div class="flex items-start">
+                                    <i class="fas fa-lightbulb text-yellow-500 mt-1 mr-3"></i>
+                                    <div>
+                                        <h4 class="text-xs font-bold text-gray-500 uppercase tracking-wide mb-1">Agentic Insight</h4>
+                                        <p id="case-insight" class="text-sm font-medium text-gray-800">
+                                            Agentic Workflow: Observation → FAERS Query → Meta-Analysis → Hypothesis Verification
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Dataset Section -->
     <section class="py-16 bg-white border-t border-gray-200">
         <div class="max-w-6xl mx-auto px-4">
@@ -741,8 +799,96 @@
 
     <!-- Video Autoplay Script -->
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            // Typewriter Factory Function
+        // Clinical Case Switching Logic
+        const casesData = {
+            1: {
+                title: "Autonomously Investigating Semaglutide's Immune Effect",
+                image: "case1.png",
+                desc: "From a single patient observation, MedOS autonomously queries the <strong>FAERS database</strong> to analyze adverse events and performs meta-analysis on inflammatory factors (TNF-α, IL-6).",
+                insight: "Agentic Workflow: Observation → FAERS Query → Meta-Analysis → Hypothesis Verification"
+            },
+            2: {
+                title: "Autonomous Analysis of Co-mutation for Cancer Patients",
+                image: "case2.png",
+                desc: "MedOS identifies complex multi-gene mutations and automatically accesses <strong>TCGA datasets</strong> to map Top 20 co-mutations, executing Kaplan-Meier survival analysis to predict prognosis.",
+                insight: "Agentic Workflow: Genotype Input → TCGA Mining → Survival Stratification → Prognostic Report"
+            },
+            3: {
+                title: "Analysis of Metabolism and Immunotherapy Resistance",
+                image: "case3.png",
+                desc: "Investigating PD-1 resistance, MedOS integrates data from <strong>21 clinical cohorts</strong> to perform differential expression analysis, uncovering the link between metabolic pathways (e.g., Taurine) and immune response.",
+                insight: "Agentic Workflow: Clinical Phenotype → Multi-cohort Integration → Pathway Analysis → Mechanism Discovery"
+            }
+        };
+
+        let currentCaseId = 1;
+         let autoPlayInterval = null;
+
+         function switchCase(caseId) {
+             // Stop auto-play if manually switched
+             if (autoPlayInterval) {
+                 clearInterval(autoPlayInterval);
+                 autoPlayInterval = setInterval(nextCase, 5000); // Restart timer
+             }
+             
+             updateCaseDisplay(caseId);
+         }
+
+         function nextCase() {
+             currentCaseId = currentCaseId >= 3 ? 1 : currentCaseId + 1;
+             updateCaseDisplay(currentCaseId);
+         }
+
+         function updateCaseDisplay(caseId) {
+             const data = casesData[caseId];
+             if (!data) return;
+             
+             currentCaseId = caseId;
+
+             // Update Content with Fade Effect
+             const titleEl = document.getElementById('case-title');
+             const imageEl = document.getElementById('case-image');
+             const descEl = document.getElementById('case-desc');
+             const insightEl = document.getElementById('case-insight');
+             const contentContainer = document.getElementById('case-content');
+             const imageContainer = document.getElementById('case-image-container');
+
+             // Fade out
+             imageEl.classList.remove('opacity-100');
+             imageEl.classList.add('opacity-0');
+             contentContainer.classList.remove('opacity-100');
+             contentContainer.classList.add('opacity-0');
+             
+             // Wait for fade out, then update and fade in
+             setTimeout(() => {
+                 titleEl.textContent = data.title;
+                 imageEl.src = data.image;
+                 descEl.innerHTML = data.desc;
+                 insightEl.textContent = data.insight;
+                 
+                 // Fade in
+                 imageEl.classList.remove('opacity-0');
+                 imageEl.classList.add('opacity-100');
+                 contentContainer.classList.remove('opacity-0');
+                 contentContainer.classList.add('opacity-100');
+             }, 300); // Match CSS transition duration
+
+             // Update Buttons
+             [1, 2, 3].forEach(id => {
+                 const btn = document.getElementById(`btn-case-${id}`);
+                 if (id === caseId) {
+                     btn.className = "px-3 py-1 text-sm font-semibold rounded-full bg-blue-50 text-blue-600 shadow-sm transition-all border border-blue-200 ring-2 ring-blue-100";
+                 } else {
+                     btn.className = "px-3 py-1 text-sm font-semibold rounded-full bg-white text-gray-600 hover:bg-gray-50 hover:text-blue-600 shadow-sm transition-all border border-gray-200 hover:border-blue-100 opacity-70 hover:opacity-100";
+                 }
+             });
+         }
+ 
+         document.addEventListener("DOMContentLoaded", function() {
+             // Start Auto Play
+             autoPlayInterval = setInterval(nextCase, 5000);
+             
+             // Typewriter Factory Function
             function createTypewriter(elementId, words, options = {}) {
                 const element = document.getElementById(elementId);
                 if (!element) return;
