@@ -370,7 +370,7 @@
                         <i class="fas fa-bolt text-9xl"></i>
                     </div>
                     <div class="relative z-10">
-                        <h3 class="text-2xl font-bold text-emerald-600 mb-1">System 1: Reflex</h3>
+                        <h3 class="text-2xl font-bold text-emerald-600 mb-1">System 1: Real-Time</h3>
                         <p class="text-sm text-gray-400 mb-6 uppercase tracking-wider font-semibold">Fast</p>
                         
                         <ul class="space-y-3 text-sm text-gray-700">
@@ -498,7 +498,7 @@
             <h2 class="text-3xl font-bold text-center mb-12">XR-Robot-Human Collaboration</h2>
             
             <!-- Part 1 -->
-            <div class="mb-16">
+            <div class="mb-16" id="xr-part-1">
                 <div class="grid md:grid-cols-2 gap-8 items-stretch">
                     <!-- Left: Robot 1 Image -->
                     <div class="bg-gray-50 rounded-2xl border border-gray-200 h-full p-2 flex items-center justify-center">
@@ -542,7 +542,7 @@
             </div>
 
             <!-- Part 2 -->
-            <div>
+            <div id="xr-part-2">
                 <div class="grid md:grid-cols-2 gap-8 items-stretch">
                     <!-- Left: Robot 2 Image -->
                     <div class="bg-gray-50 rounded-2xl border border-gray-200 h-full p-2 flex items-center justify-center">
@@ -715,9 +715,9 @@
     <!-- Join Us Section -->
     <section class="py-16 bg-gray-50 border-t border-gray-200">
         <div class="max-w-4xl mx-auto px-4 text-center">
-            <h2 class="text-3xl font-bold mb-2">Join Us</h2>
-            <p class="text-xl font-semibold text-gray-800 mb-2">Partner with MedOS</p>
-            <p class="text-gray-600 mb-8">Tell us your use-case. We'll follow up with access details.</p>
+            <h2 class="text-3xl font-bold mb-2">Partner with MedOS</h2>
+            <p class="text-xl font-semibold text-gray-800 mb-2">Request Early Access for Research & Clinical Trials</p>
+            <p class="text-gray-600 mb-8">Whether you are an AI researcher, a clinician, or a roboticist, tell us your use case.</p>
             
             <div class="bg-white p-2 md:p-6 rounded-xl shadow-sm border border-gray-200 overflow-hidden">
                 <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScVUD0L_lZZ05_O3gdKIg69Y3fHqWNskbqOMRpe89fo8i_6TA/viewform?embedded=true" width="100%" height="800" frameborder="0" marginheight="0" marginwidth="0" class="w-full">Loading…</iframe>
@@ -1110,7 +1110,7 @@
                     xrCharts.jitter = new Chart(jitterCtx.getContext('2d'), {
                         type: 'bar',
                         data: {
-                            labels: [['Robot'], ['Human']],
+                            labels: [['MedOS', '+ XR'], ['Traditional', 'Surgery']],
                             datasets: [{
                                 data: [0.5, 13.6],
                                 backgroundColor: ['rgba(59, 130, 246, 0.8)', 'rgba(156, 163, 175, 0.5)'],
@@ -1130,7 +1130,7 @@
                     xrCharts.drift = new Chart(driftCtx.getContext('2d'), {
                         type: 'bar',
                         data: {
-                            labels: [['Robot'], ['Human']],
+                            labels: [['MedOS', '+ XR'], ['Traditional', 'Surgery']],
                             datasets: [{
                                 data: [1.3, 22.6],
                                 backgroundColor: ['rgba(59, 130, 246, 0.8)', 'rgba(156, 163, 175, 0.5)'],
@@ -1150,7 +1150,7 @@
                     xrCharts.tilt = new Chart(tiltCtx.getContext('2d'), {
                         type: 'bar',
                         data: {
-                            labels: [['Robot'], ['Human']],
+                            labels: [['MedOS', '+ XR'], ['Traditional', 'Surgery']],
                             datasets: [{
                                 data: [0.2, 5.7],
                                 backgroundColor: ['rgba(59, 130, 246, 0.8)', 'rgba(156, 163, 175, 0.5)'],
@@ -1240,14 +1240,24 @@
                             createDemoChart(`demoChart${index}`, democratizingData[`chart${index}`], index);
                         }
 
-                        // XR Collab 1
-                        if (targetId === 'xr-collab-charts-1') {
+                        // XR Collab 1 (Whole Section)
+                        if (targetId === 'xr-part-1') {
+                            // Animate charts when the whole section comes into view
                             initXRCharts1();
+                            
+                            // Optional: Add entrance animation for the container itself
+                            const container = document.getElementById('xr-part-1');
+                            container.classList.remove('opacity-0', 'translate-y-10');
+                            container.classList.add('opacity-100', 'translate-y-0');
                         }
 
-                        // XR Collab 2
-                        if (targetId === 'xr-collab-charts-2') {
+                        // XR Collab 2 (Whole Section)
+                        if (targetId === 'xr-part-2') {
                             initXRCharts2();
+                            
+                            const container = document.getElementById('xr-part-2');
+                            container.classList.remove('opacity-0', 'translate-y-10');
+                            container.classList.add('opacity-100', 'translate-y-0');
                         }
                     } else {
                         // Optional: Clear charts when out of view to force full re-animation on next entry
@@ -1255,20 +1265,29 @@
                         // (re-init on entry) is sufficient as long as we destroy previous instances.
                         // However, adding an explicit destroy on exit can ensure cleaner state.
                         
-                        if (targetId === 'xr-collab-charts-1') {
+                        if (targetId === 'xr-part-1') {
                             if (xrCharts.jitter) { xrCharts.jitter.destroy(); xrCharts.jitter = null; }
                             if (xrCharts.drift) { xrCharts.drift.destroy(); xrCharts.drift = null; }
                             if (xrCharts.tilt) { xrCharts.tilt.destroy(); xrCharts.tilt = null; }
+                            
+                            // Reset opacity for re-entry animation
+                            const container = document.getElementById('xr-part-1');
+                            container.classList.add('opacity-0', 'translate-y-10');
+                            container.classList.remove('opacity-100', 'translate-y-0');
                         }
                         
-                        if (targetId === 'xr-collab-charts-2') {
+                        if (targetId === 'xr-part-2') {
                             if (xrCharts.proc1) { xrCharts.proc1.destroy(); xrCharts.proc1 = null; }
                             if (xrCharts.proc2) { xrCharts.proc2.destroy(); xrCharts.proc2 = null; }
                             if (xrCharts.proc3) { xrCharts.proc3.destroy(); xrCharts.proc3 = null; }
+                            
+                            const container = document.getElementById('xr-part-2');
+                            container.classList.add('opacity-0', 'translate-y-10');
+                            container.classList.remove('opacity-100', 'translate-y-0');
                         }
                     }
                 });
-            }, { threshold: 0.2 });
+            }, { threshold: 0.15 });
 
             // Observe containers
             const sotaContainer = document.getElementById('sota-chart-container');
@@ -1279,11 +1298,33 @@
                 if (container) chartObserver.observe(container);
             }
 
-            const xrContainer1 = document.getElementById('xr-collab-charts-1');
-            if (xrContainer1) chartObserver.observe(xrContainer1);
+            const xrPart1 = document.getElementById('xr-part-1');
+            if (xrPart1) {
+                // Initial state for animation
+                xrPart1.classList.add('transition-all', 'duration-1000', 'ease-out', 'opacity-0', 'translate-y-10');
+                chartObserver.observe(xrPart1);
+                
+                // Keep hover effect on charts container
+                const chartsContainer = document.getElementById('xr-collab-charts-1');
+                if (chartsContainer) {
+                    chartsContainer.addEventListener('mouseenter', () => {
+                        initXRCharts1();
+                    });
+                }
+            }
 
-            const xrContainer2 = document.getElementById('xr-collab-charts-2');
-            if (xrContainer2) chartObserver.observe(xrContainer2);
+            const xrPart2 = document.getElementById('xr-part-2');
+            if (xrPart2) {
+                xrPart2.classList.add('transition-all', 'duration-1000', 'ease-out', 'opacity-0', 'translate-y-10');
+                chartObserver.observe(xrPart2);
+                
+                const chartsContainer = document.getElementById('xr-collab-charts-2');
+                if (chartsContainer) {
+                    chartsContainer.addEventListener('mouseenter', () => {
+                        initXRCharts2();
+                    });
+                }
+            }
         });
     </script>
     
