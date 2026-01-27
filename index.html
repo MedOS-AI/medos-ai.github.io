@@ -208,7 +208,7 @@
                         <span class="tech-shimmer">MedOS</span>
                     </h1>
                     <p class="text-xl md:text-2xl font-bold text-gray-900 mt-1">
-                        Towards First AI-XR-Cobot World Model
+                        AI-XR-Cobot World Model
                     </p>
                     <p class="text-lg md:text-xl font-medium text-gray-600 mt-2 h-8">
                         World Model for <span id="hero-typewriter" class="text-blue-600 border-r-2 border-blue-600 pr-1"></span>
@@ -220,8 +220,6 @@
                     <div class="flex flex-wrap items-center justify-center md:justify-end gap-6">
                         <img src="assets/logos/stanford.png" alt="Stanford University" class="h-10 opacity-90 hover:opacity-100 transition-opacity">
                         <img src="assets/logos/princeton.png" alt="Princeton University" class="h-10 opacity-90 hover:opacity-100 transition-opacity">
-                        <div class="hidden md:block h-8 w-px bg-gray-300 mx-2"></div>
-                        <img src="assets/logos/nvidia.svg" alt="NVIDIA" class="h-5 opacity-90 hover:opacity-100 transition-opacity">
                     </div>
                 </div>
             </div>
@@ -432,15 +430,14 @@
                 </div>
 
                 <!-- Image Area -->
-                <div class="w-full bg-gradient-to-b from-gray-50 to-white relative overflow-hidden group p-8 flex items-center justify-center min-h-[400px]">
-                    <!-- Background Decoration -->
-                    <div class="absolute inset-0 opacity-30 pointer-events-none">
-                        <div class="absolute top-0 left-0 w-64 h-64 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
-                        <div class="absolute top-0 right-0 w-64 h-64 bg-indigo-100 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
+                <div class="w-full relative overflow-hidden group p-8 flex items-center justify-center min-h-[400px]">
+                    <!-- Dynamic Blurred Background (Frosted Glass Effect) -->
+                    <div class="absolute inset-0 z-0 overflow-hidden">
+                        <img id="case-bg-image" src="case1.png" alt="" class="w-full h-full object-cover filter blur-3xl opacity-100 scale-110 transition-opacity duration-500">
                     </div>
                     
                     <div id="case-image-container" class="relative z-10 w-full max-w-4xl transition-all duration-500 transform">
-                        <img id="case-image" src="case1.png" alt="Clinical Case" class="w-full h-auto object-contain max-h-[500px] shadow-2xl rounded-xl border border-gray-100/50 bg-white/80 backdrop-blur-sm transition-opacity duration-500 opacity-100">
+                        <img id="case-image" src="case1.png" alt="Clinical Case" class="w-full h-auto object-contain max-h-[500px] shadow-2xl rounded-xl border border-white/20 transition-opacity duration-500 opacity-100">
                     </div>
                 </div>
 
@@ -678,8 +675,8 @@
         <h2 class="text-2xl font-bold mb-6">Citation</h2>
         <div class="bg-gray-100 p-6 rounded-lg overflow-x-auto custom-scrollbar">
             <pre class="font-mono text-sm text-gray-700"><code>@article{MedOS,
-  title={MedOS: The AI-XR World Model That Sees and Operates},
-  author={Yingcheng Wu, ..., Mengdi Wang*, Le Cong*},
+  title={MedOS: AI-XR-Cobot World Model for Clinical Perception and Action},
+  author={Yingcheng Charles Wu, Ming Yin, Baiyu Shi, Zaixi Zhang, ..., Mengdi Wang*, Le Cong*},
   journal={Preprint},
   year={2026}
 }</code></pre>
@@ -761,12 +758,6 @@
                 </div>
             </div>
 
-            <!-- Acknowledgement -->
-            <div class="bg-blue-50 border border-blue-100 rounded-xl p-6 text-center max-w-4xl mx-auto">
-                <p class="text-blue-800 text-sm font-medium leading-relaxed">
-                    We acknowledge the support of <strong class="text-blue-900">NVIDIA</strong>, <strong class="text-blue-900">Nebius</strong>, <strong class="text-blue-900">AI4Science Catalyst Institute</strong>, and <strong class="text-blue-900">VITURE</strong> for VLM fine-tuning, agentic integration, infrastructure, and hardware.
-                </p>
-            </div>
         </div>
     </section>
 
@@ -848,6 +839,7 @@
              // Update Content with Fade Effect
              const titleEl = document.getElementById('case-title');
              const imageEl = document.getElementById('case-image');
+             const bgImageEl = document.getElementById('case-bg-image');
              const descEl = document.getElementById('case-desc');
              const insightEl = document.getElementById('case-insight');
              const contentContainer = document.getElementById('case-content');
@@ -856,6 +848,8 @@
              // Fade out
              imageEl.classList.remove('opacity-100');
              imageEl.classList.add('opacity-0');
+             bgImageEl.classList.remove('opacity-100');
+             bgImageEl.classList.add('opacity-0');
              contentContainer.classList.remove('opacity-100');
              contentContainer.classList.add('opacity-0');
              
@@ -863,12 +857,15 @@
              setTimeout(() => {
                  titleEl.textContent = data.title;
                  imageEl.src = data.image;
+                 bgImageEl.src = data.image;
                  descEl.innerHTML = data.desc;
                  insightEl.textContent = data.insight;
                  
                  // Fade in
                  imageEl.classList.remove('opacity-0');
                  imageEl.classList.add('opacity-100');
+                 bgImageEl.classList.remove('opacity-0');
+                 bgImageEl.classList.add('opacity-100');
                  contentContainer.classList.remove('opacity-0');
                  contentContainer.classList.add('opacity-100');
              }, 300); // Match CSS transition duration
