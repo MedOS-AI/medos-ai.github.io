@@ -185,6 +185,47 @@
             font-family: 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', monospace;
             letter-spacing: -0.025em;
         }
+
+        /* Banner First Frame Buffer */
+        .banner-video-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            aspect-ratio: 16 / 9;
+        }
+        .banner-video,
+        .banner-poster {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+        .banner-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        .banner-video.is-ready {
+            opacity: 1;
+        }
+        .banner-poster {
+            position: relative;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+            pointer-events: none;
+        }
+        .banner-poster.is-hidden {
+            opacity: 0;
+        }
     </style>
 </head>
 <body class="text-gray-800 antialiased bg-slate-50 relative overflow-x-hidden">
@@ -226,11 +267,14 @@
 
             <!-- Page Wide Banner Video -->
             <div class="w-full mb-8 bg-black shadow-2xl rounded-xl overflow-hidden border border-gray-800">
-                <video autoplay playsinline loop controls class="w-full h-auto block max-h-[80vh] object-cover">
-                    <source src="frontbanner.mp4" type="video/mp4">
-                    <source src="frontbanner.mov">
-                    Your browser does not support the video tag.
-                </video>
+                <div class="banner-video-container max-h-[80vh]">
+                    <img id="banner-poster" class="banner-poster" src="banner_new_firstFrame.png" alt="Banner first frame">
+                    <video id="banner-video" autoplay playsinline loop controls preload="auto" class="banner-video object-cover">
+                        <source src="frontbanner.mp4" type="video/mp4">
+                        <source src="frontbanner.mov">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
             </div>
 
             <!-- Action Buttons (Dock Style) -->
@@ -965,6 +1009,40 @@
                 pauseEnd: 2500,
                 pauseStart: 500
             });
+
+            // Banner video: show first frame until 10% buffered
+            const bannerVideo = document.getElementById('banner-video');
+            const bannerPoster = document.getElementById('banner-poster');
+            if (bannerVideo && bannerPoster) {
+                let bannerRevealed = false;
+
+                const revealBannerVideo = () => {
+                    if (bannerRevealed) return;
+                    bannerRevealed = true;
+                    bannerVideo.classList.add('is-ready');
+                    bannerPoster.classList.add('is-hidden');
+                    setTimeout(() => {
+                        bannerPoster.style.display = 'none';
+                    }, 500);
+                };
+
+                const checkBannerBuffer = () => {
+                    if (bannerRevealed) return;
+                    const duration = bannerVideo.duration;
+                    if (!duration || !isFinite(duration)) return;
+                    if (bannerVideo.buffered.length > 0) {
+                        const bufferedEnd = bannerVideo.buffered.end(bannerVideo.buffered.length - 1);
+                        const percentLoaded = (bufferedEnd / duration) * 100;
+                        if (percentLoaded >= 10) {
+                            revealBannerVideo();
+                        }
+                    }
+                };
+
+                bannerVideo.addEventListener('loadedmetadata', checkBannerBuffer);
+                bannerVideo.addEventListener('progress', checkBannerBuffer);
+                bannerVideo.addEventListener('canplay', checkBannerBuffer);
+            }
 
             const videos = document.querySelectorAll("video");
             
